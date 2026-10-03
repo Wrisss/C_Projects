@@ -7,9 +7,6 @@
         struct Node* next;
     };
 
-    
-
-
 int main(){
 
     struct Node *head = malloc(sizeof(*head));
