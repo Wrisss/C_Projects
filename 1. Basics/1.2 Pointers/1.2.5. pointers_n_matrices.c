@@ -4,8 +4,8 @@ int main(){
 
     int matrix[2][4] = {{0,1,2,3}, {6,7,8,9}};
 
-        printf("%zu\n", sizeof(matrix));
-        printf("%zu\n\n", sizeof(*matrix));
+        printf("%zu\n", sizeof(matrix)); // size of the entire structure
+        printf("%zu\n\n", sizeof(*matrix)); // size of the first row
 
 /*(1)*/ printf("%p\n", (void*) matrix); // address of the first row
         printf("%p\n", (void*) &matrix[0]); // same output different syntax of (1)
