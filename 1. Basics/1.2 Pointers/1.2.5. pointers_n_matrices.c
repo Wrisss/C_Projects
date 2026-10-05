@@ -7,13 +7,18 @@ int main(){
         printf("%zu\n", sizeof(matrix)); // size of the entire structure
         printf("%zu\n\n", sizeof(*matrix)); // size of the first row
 
-/*(1)*/ printf("%p\n", (void*) matrix); // address of the first row
-        printf("%p\n", (void*) &matrix[0]); // same output different syntax of (1)
-        printf("%p\n", (void*) &matrix[0][0]); // same output different syntax of (1)
-        printf("%p\n", (void*) *(matrix));  // same output different syntax of (1)
-        printf("%p\n", (void*) *matrix); // same output different syntax of (1)
-        printf("%d\n", *matrix); // *matrix is a (int)[4] type, deferencing one time just give the integer as an address
-        printf("%d\n\n", *(*matrix)); // deferencing two times give the value of the first element of the first row
+/*(1)*/ printf("%p\n", (void*)&matrix); /* address of the first element of the first row. 
+                                        This is conceptually wrong beca we want to retrieve the address 
+                                        of the entire matrix.*/
+        printf("%p\n", (void*)matrix); /* same output different syntax of (1). We retrieve the address of the
+                                        first element of the first but actually the type is (int*)[4]*/ 
+        printf("%p\n", (void*)&matrix[0]); /* same output different syntax of (1). Also conceptually wrong:
+                                           we want to retrieve the address of the first row of the matrix.*/    
+        printf("%p\n", (void*)&matrix[0][0]); // same output different syntax of (1). Address of the first element
+                                              // of the matrix. OK!  
+        printf("%p\n", (void*)*matrix); // same output different syntax of (1). Same error of the Syntax &matrix[0]
+        printf("%d\n", matrix[0][0]); 
+        printf("%d\n\n", **matrix); // deferencing two times give the value of the first element of the first row
 
         // 0
 /*(2)*/ printf("%d\n", matrix[0][0]);
@@ -23,14 +28,14 @@ int main(){
 
         //6
 /*(3)*/ printf("%d\n", matrix[1][0]);
-        printf("%p\n", (void*) &matrix[1][0]); // address of the second row
+        printf("%p\n", (void*)&matrix[1][0]); // address of the second row
         printf("%d\n", *(matrix[1])); // same output different syntax of (3)
         printf("%d\n", *(*(matrix + 1))); // same output different syntax of (3)
-        printf("%p\n\n", (void*) *(matrix + 1)); // address of the second row
+        printf("%p\n\n", (void*)*(matrix + 1)); // address of the second row
 
         //1
 /*(4)*/ printf("%d\n", matrix[0][1]);
-        printf("%p\n", (void*) &matrix[0][1]); // address of the first element of the first row
+        printf("%p\n", (void*) &matrix[0][1]); // address of the second element of the first row
         printf("%d\n", (*matrix)[1]);  // same output different syntax of (4)
         printf("%d\n", *(matrix[0]) + 1); // same output different syntax of (4)
         printf("%d\n\n", *(*(matrix) + 1)); // same output different syntax of (4)
@@ -38,7 +43,7 @@ int main(){
         //9
 /*(5)*/ printf("%d\n", matrix[1][3]);
         printf("%d\n", *(matrix[1]) + 3 );
-        printf("%d\n", *(*(matrix + 1) + 3)); //same output different sytanx of (5)
+        printf("%d\n", *(*(matrix + 1) + 3)); // same output different sytanx of (5)
 
         //printf("%p\n", *(matrix + 1));
         

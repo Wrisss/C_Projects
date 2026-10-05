@@ -21,6 +21,8 @@ int main(){
      the information of how this block is divived is given by the initilization int* vector;
      we can actually access element of vector as a proper array using both the syntaxes vector[i] or *(vector+i)  
     */
+    /* malloc always allocate contiguosly block of memory, like an array, so you can navigate this block
+    using the type defined to the purpose to skip chuncks of the block allocated. */
      vector = malloc(number * sizeof(int));
 
     // Always check for successful memory allocation
