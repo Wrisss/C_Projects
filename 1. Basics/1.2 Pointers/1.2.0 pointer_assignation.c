@@ -3,10 +3,10 @@
 int main(){
 
     int number = 99;
-    int *ptr1, *ptr2; // initializate two pointer to int
+    int *ptr1, *ptr2; // initializate two pointers to int
 
     ptr1 = &number; // assign the address of variable number to ptr1
-    ptr2 = ptr1; // assign the address inside ptr1 to ptr2
+    ptr2 = ptr1; // assign the address inside ptr1 to ptr2. We have now two references to the same object.
 
     printf("%d\n", *ptr1);
     printf("%d\n", *ptr2);
